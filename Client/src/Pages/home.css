@@ -1,0 +1,33 @@
+section{
+    height: 100vh;
+    width: 100vw;
+    border: solid black 1px;
+}
+
+.outer {
+    position: relative; 
+    height: 100vh;
+    display: flex;
+    width: 100vw;
+    align-items: center;
+    background-image: url(https://plus.unsplash.com/premium_photo-1664475324739-ad3cef168415?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8dGVsZW1lZGljaW5lfGVufDB8fDB8fHww);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+
+
+.description {
+    position: absolute; 
+    bottom: 10%;
+    left: 5%; 
+    color: white; 
+    font-size: 24px; 
+    font-family: "Play", sans-serif;
+    text-align: center; 
+    background-color: rgba(173, 170, 170, 0.213); 
+    padding: 20px; 
+    max-width: 80%;
+    width: 20%;
+}

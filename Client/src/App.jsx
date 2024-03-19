@@ -18,7 +18,7 @@ const App = () => {
   return (
     <Router>
       <div className="app-container">
-        <div className="content">
+        
           <Header/>
           <div className="main-content">
             <Routes>
@@ -35,7 +35,7 @@ const App = () => {
             </Routes>
           </div>
           <Footer/>
-        </div>
+        
       </div>
     </Router>
   );
