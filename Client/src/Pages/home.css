@@ -1,33 +1,200 @@
 section{
     height: 100vh;
     width: 100vw;
-    border: solid black 1px;
 }
 
-.outer {
-    position: relative; 
+
+.home-section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  width: 100vw;
+  align-items: flex-end;
+  background-image: url(https://plus.unsplash.com/premium_photo-1664475324739-ad3cef168415?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8dGVsZW1lZGljaW5lfGVufDB8fDB8fHww);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.home-section .home-content {
+  position: absolute;
+  bottom: 10%;
+  right: 5%;
+  color: white;
+  font-size: 24px;
+  font-family: "Play", sans-serif;
+  text-align: right;
+  background-color: rgba(173, 170, 170, 0.213);
+  padding: 20px;
+  max-width: 80%;
+  width: 20%;
+}
+.appointments-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+  }
+  
+  .appointments-content {
+    text-align: center;
+  }
+  
+  .appointments-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .appointments-description {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  
+  .appointments-link {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #00a651;
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .appointments-link:hover {
+    background-color: #008040;
+  }
+
+  .symptomschecker-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+  }
+  
+  .symptomschecker-content {
+    text-align: center;
+  }
+  
+  .symptomschecker-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .symptomschecker-description {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  
+  .symptomschecker-link {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #00a651;
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .symptomschecker-link:hover {
+    background-color: #008040;
+  }
+  .consultation-section {
+    position: relative;
     height: 100vh;
     display: flex;
     width: 100vw;
-    align-items: center;
-    background-image: url(https://plus.unsplash.com/premium_photo-1664475324739-ad3cef168415?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8dGVsZW1lZGljaW5lfGVufDB8fDB8fHww);
+    align-items: flex-end;
+    background-image: url(https://i.pinimg.com/564x/cd/3c/ce/cd3cce5f17a2b776f25c051b1f8047fd.jpg);
     background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
-
-}
-
-
-
-.description {
-    position: absolute; 
+  }
+  
+  .consultation-section .section-content {
+    position: absolute;
     bottom: 10%;
-    left: 5%; 
-    color: white; 
-    font-size: 24px; 
+    right: 5%;
+    color: white;
+    font-size: 24px;
     font-family: "Play", sans-serif;
-    text-align: center; 
-    background-color: rgba(173, 170, 170, 0.213); 
-    padding: 20px; 
+    text-align: right;
+    background-color: rgba(173, 170, 170, 0.213);
+    padding: 20px;
     max-width: 80%;
     width: 20%;
+  }
+
+  .about-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    width: 100vw;
+    align-items: flex-end;
+    background-image: url(https://i.pinimg.com/564x/cd/3c/ce/cd3cce5f17a2b776f25c051b1f8047fd.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .about-section .section-content {
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+    color: white;
+    font-size: 24px;
+    font-family: "Play", sans-serif;
+    text-align: right;
+    background-color: rgba(173, 170, 170, 0.213);
+    padding: 20px;
+    max-width: 80%;
+    width: 20%;
+  }
+.profile-section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+}
+
+.profile-section .section-content {
+  text-align: center;
+}
+
+.profile-section .profile-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.profile-section .profile-description {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.profile-section .profile-link {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #00a651;
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.profile-section .profile-link:hover {
+  background-color: #008040;
 }

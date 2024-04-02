@@ -1,0 +1,91 @@
+.consultation-page-container {
+  display: flex;
+  height: 100vh;
+}
+
+.doctor-list-container {
+  width: 30%;
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-right: 1px solid #ccc;
+  overflow-y: auto;
+}
+
+.doctor-list-container h2 {
+  margin-bottom: 10px;
+}
+
+.doctor-list-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.doctor-list-container li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.doctor-list-container li:hover {
+  background-color: #e0e0e0;
+}
+
+.chat-window-container {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.messages-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.message-container {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  max-width: 70%;
+}
+
+.user-message {
+  background-color: #007bff;
+  color: #fff;
+  align-self: flex-end;
+}
+
+.doctor-message {
+  background-color: #f0f0f0;
+  color: #000;
+  align-self: flex-start;
+}
+
+.input-area-container {
+  display: flex;
+  align-items: flex-end;
+  margin-top: 20px;
+}
+
+.input-area-container input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px 0 0 8px;
+}
+
+.input-area-container button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.input-area-container button:hover {
+  background-color:#00aaff;
+}
