@@ -1,62 +1,145 @@
-import sql from 'mssql'
+import sql from 'mssql';
 import config from '../db/config.js';
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
 
+export const signup = async (req, res) => {
+  const { firstname, lastname, email, password } = req.body;
+  const hashedPassword = await bcrypt.hash(password, 10);
 
-export const register = async (req, res) => {
-    const { username, password, email } = req.body;
-    const hashedPassword = bcrypt.hashSync(password, 10);
-    try {
-        const pool = await sql.connect(config.sql);
-        const result = await pool.request()
-            .input('username', sql.VarChar, username)
-            .input('email', sql.VarChar, email)
-            .query('SELECT * FROM Users WHERE UserName = @username OR email = @email');
-        const user = result.recordset[0];
-        if (user) {
-            res.status(409).json({ error: 'User already exists' });
-        } else {
-            await pool.request()
-                .input('username', sql.VarChar, username)
-                .input('hashedpassword', sql.VarChar, hashedPassword)
-                .input('email', sql.VarChar, email)
-                .query('INSERT INTO Users (UserName, Password, Email) VALUES (@username, @hashedpassword, @email)');
-            res.status(200).send({ message: 'User created successfully' });
-        }
+  try {
+    const pool = await sql.connect(config.sql);
+    const result = await pool
+      .request()
+      .input('email', sql.VarChar, email)
+      .query('SELECT * FROM Users WHERE email = @email');
 
-    } catch (error) {
-        res.status(500).json(error.message);
-    } finally {
-        sql.close();
-    }
-
-};
-
-export const loginRequired = (req, res, next) => {
-    if (req.user) {
-        next();
+    const user = result.recordset[0];
+    if (user) {
+      res.status(409).json({ message: 'User already exists' });
     } else {
-        return res.status(401).json({ message: 'Unauthorized user!' });
-    }
-};
+      await pool
+        .request()
+        .input('firstname', sql.VarChar, firstname)
+        .input('lastname', sql.VarChar, lastname)
+        .input('email', sql.VarChar, email)
+        .input('hashedPassword', sql.VarChar, hashedPassword)
+        .query(
+          'INSERT INTO Users (firstname, lastname, email, password) VALUES (@firstname, @lastname, @email, @hashedPassword)'
+        );
 
+      res.status(200).send({ message: 'User created successfully' });
+    }
+  } catch (error) {
+    console.error('Error creating user:', error);
+    res
+      .status(500)
+      .json({ error: 'An error occurred while creating the user' });
+  } finally {
+    sql.close();
+  }
+};
 export const login = async (req, res) => {
-    const { username, password } = req.body;
-    let pool = await sql.connect(config.sql);
-    const result = await pool.request()
-        .input('username', sql.VarChar, username)
-        .query('SELECT * FROM Users WHERE UserName = @username');
+  const { email, password } = req.body;
+
+  try {
+    const pool = await sql.connect(config.sql);
+    const result = await pool
+      .request()
+      .input('email', sql.VarChar, email)
+      .query('SELECT * FROM Users WHERE email = @email');
+
     const user = result.recordset[0];
     if (!user) {
-        res.status(401).json({ error: 'Authentication failed. Wrong credentials.' });
-    } else {
-        if (!bcrypt.compareSync(password, user.Password)) {
-            res.status(401).json({ error: 'Authentication failed. Wrong credentials.' });
-        } else {
-            const token = `JWT ${jwt.sign({ username: user.UserName, email: user.Email }, config.jwt_secret)}`;
-            res.status(200).json({ email: user.Email, username: user.UserName, token: token });
-        }
+      res.status(404).json({ message: 'User not found' });
+      return;
     }
+
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    if (!passwordMatch) {
+      res.status(401).json({ message: 'Invalid password' });
+      return;
+    }
+
+    // Optionally, you can remove the password field from the response
+    delete user.password;
+
+    res.status(200).json({ message: 'Login successful', user });
+  } catch (error) {
+    console.error('Error during login:', error);
+    res.status(500).json({ error: 'An error occurred during login' });
+  } finally {
+    sql.close();
+  }
 };
 
+export const registerDoctor = async (req, res) => {
+  const { firstname, lastname, email, password } = req.body;
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  try {
+    const pool = await sql.connect(config.sql);
+    const result = await pool
+      .request()
+      .input('email', sql.VarChar, email)
+      .query('SELECT * FROM Doctors WHERE email = @email');
+
+    const existingDoctor = result.recordset[0];
+    if (existingDoctor) {
+      res.status(409).json({ message: 'Doctor already exists' });
+      return;
+    }
+
+    await pool
+      .request()
+      .input('firstname', sql.VarChar, firstname)
+      .input('lastname', sql.VarChar, lastname)
+      .input('email', sql.VarChar, email)
+      .input('hashedPassword', sql.VarChar, hashedPassword)
+      .query(
+        'INSERT INTO Doctors (first_name, last_name, email, password) VALUES (@firstname, @lastname, @email, @hashedPassword)'
+      );
+
+    res.status(200).json({ message: 'Doctor registered successfully' });
+  } catch (error) {
+    console.error('Error registering doctor:', error);
+    res.status(500).json({
+      error: 'An error occurred while registering the doctor',
+    });
+  } finally {
+    sql.close();
+  }
+};
+
+export const loginDoctor = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const pool = await sql.connect(config.sql);
+    const result = await pool
+      .request()
+      .input('email', sql.VarChar, email)
+      .query('SELECT * FROM Doctors WHERE email = @email');
+
+    const user = result.recordset[0];
+    if (!user) {
+      res.status(404).json({ message: 'User not found' });
+      return;
+    }
+
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    if (!passwordMatch) {
+      res.status(401).json({ message: 'Invalid password' });
+      return;
+    }
+
+    // Optionally, you can remove the password field from the response
+    delete user.password;
+
+    res.status(200).json({ message: 'Login successful', user });
+  } catch (error) {
+    console.error('Error during login:', error);
+    res.status(500).json({ error: 'An error occurred during login' });
+  } finally {
+    sql.close();
+  }
+};

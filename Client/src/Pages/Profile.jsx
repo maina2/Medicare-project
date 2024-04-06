@@ -1,9 +1,8 @@
-import SignIn from './SignIn';
 import './profile.css';
 
 function Profile() {
   return (
-    <div><SignIn/></div>
+    <div>Profile</div>
   )
 }
 

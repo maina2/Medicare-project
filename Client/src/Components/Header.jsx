@@ -1,10 +1,11 @@
-// Header.jsx
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './header.css'; // Import CSS file for styling
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
+
   return (
     <header className="navbar">
       <div className="logo">
@@ -15,7 +16,7 @@ const Header = () => {
       <nav>
         <ul className="nav-links">
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/home">Home</Link>
           </li>
           <li>
             <Link to="/appointments">Appointments</Link>
@@ -27,12 +28,15 @@ const Header = () => {
             <Link to="/symptomschecker">Symptoms Checker</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link to="/">About</Link>
           </li>
-          <li>
-            <button><Link to="/signIn">SignIn</Link></button>
-            
-          </li>
+          
+            <li>
+              <Link to="/profile">
+                <FontAwesomeIcon icon={faUser} />
+              </Link>
+            </li>
+          
         </ul>
       </nav>
     </header>

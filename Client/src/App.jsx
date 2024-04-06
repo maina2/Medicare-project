@@ -11,6 +11,8 @@ import SymptomsChecker from './Pages/SymptomsChecker';
 import Consultation from './Pages/Consultation';
 import Register from './Pages/Register';
 import Logout from './Pages/Logout';
+import DoctorRegister from './Pages/DoctorRegister';
+import DoctorSignIn from './Pages/DoctorSignIn';
 
 const App = () => {
   return (
@@ -19,13 +21,15 @@ const App = () => {
         <Header />
         <div className="main-content">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<About />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/appointments" element={<Appointments />} />
             <Route path="/consultation" element={<Consultation />} />
             <Route path="/symptomschecker" element={<SymptomsChecker />} />
-            <Route path="/about" element={<About />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/doctorRegister" element={<DoctorRegister />} />
+            <Route path="/doctorSignIn" element={<DoctorSignIn />} />
             <Route path="/signIn" element={<SignIn />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="*" element={<Navigate to="/" />} />

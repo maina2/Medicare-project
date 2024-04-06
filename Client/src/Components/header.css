@@ -1,11 +1,11 @@
-*{
-    padding:0px;
-    margin: 0px;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .navbar {
-position: fixed;
+  position: relative;
   top: 0;
   background-color: #ffffff;
   display: flex;
@@ -13,67 +13,63 @@ position: fixed;
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   height: 4.3rem;
-  padding: 0px 20px;
-  width: 100%; 
-  z-index: 1000; 
+  padding: 0 20px;
+  width: 100%;
+  z-index: 1000;
 }
 
-  
-  .navbar .logo img {
-    width: 100px; 
-  }
+.navbar .logo img {
+  width: 100px;
+}
 
-  nav{
-    height: 65%;
-    width: 60%;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .nav-links {
-    list-style: none;
-    display: flex;
-    height: 100%;
-    width: 100%;
-    justify-content: space-between;
+nav {
+  height: 65%;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
 
+.nav-links {
+  list-style: none;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
+}
 
-  }
-  
-  .nav-links li {
-    display: flex;
-    align-items: center;
-    font-family: "Play", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-  }
-  
-  .nav-links li:last-child {
-    margin-right: 0;
-  }
-  
-  .nav-links li a {
-    text-decoration: none;
-    color: #124948; 
-  }
-  
-  .nav-links li a:hover {
-    color: #0a2d2b; 
-  }
-  
-  .nav-links button {
-    border: none;
-    width: 6.5rem;
-    height: 2.1rem;
-    border-radius: 10px;
-    background-color: #124948;
-    font-family: "Play", sans-serif;
-    color: white;
-  }
-  
-  .nav-links button a {
-    text-decoration: none;
-    color: white;
-    font-size: larger;
-  }
-  
+.nav-links li {
+  display: flex;
+  align-items: center;
+  font-family: "Play", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.nav-links li:last-child {
+  margin-right: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #124948;
+}
+
+.nav-links li a:hover {
+  color: #0a2d2b;
+}
+
+.nav-links button {
+  border: none;
+  width: 6.5rem;
+  height: 2.1rem;
+  border-radius: 10px;
+  background-color: #124948;
+  font-family: "Play", sans-serif;
+  color: white;
+}
+
+.nav-links button a {
+  text-decoration: none;
+  color: white;
+  font-size: larger;
+}

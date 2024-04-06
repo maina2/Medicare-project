@@ -1,4 +1,4 @@
-import './signIn.css';
+import './doctorSignIn.css';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
@@ -17,7 +17,7 @@ function SignIn() {
     };
 
     try {
-      const response = await axios.post('http://localhost:3000/auth/login', formData);
+      const response = await axios.post('http://localhost:3000/auth/loginDoctor', formData);
       // Handle the response from the backend if needed
       console.log(response.data);
 
@@ -35,7 +35,7 @@ function SignIn() {
   return (
     <div className="signInContainer">
       <div className="signInForm">
-        <h2>Sign In</h2>
+        <h2> Doctor Sign In</h2>
         <form onSubmit={handleSubmit}>
           <div className="inputContainer">
             <label htmlFor="email">Email:</label>
@@ -62,12 +62,9 @@ function SignIn() {
           <button type="submit">Sign In</button>
         </form>
         <p>
-          Are you a doctor? <a href="/doctorSignIn">Sign In  here</a>
+          Don't have an account? <a href="/doctorRegister">Register here</a>
         </p>
-        <br />
-        <p>
-          Don't have an account? <a href="/register">Register here</a>
-        </p>
+        
 
       </div>
     </div>

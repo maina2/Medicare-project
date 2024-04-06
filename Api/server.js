@@ -3,14 +3,14 @@ import express from 'express';
 import config from './src/db/config.js';
 import routes from './src/routes/routes.js';
 import jwt from 'jsonwebtoken';
-import { createServer } from 'http'; // Import createServer function
+import { createServer } from 'http'; 
 import { Server } from 'socket.io';
-import cors from 'cors'; // Import cors middleware
+import cors from 'cors';
 
 const app = express();
 const httpServer = createServer(app);
 
-// Apply CORS middleware for Express app
+//  CORS middleware for Express app
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
@@ -36,7 +36,7 @@ const io = new Server(httpServer, {
         methods: ["GET", "POST"] // Allow only specified methods
     }
 });
-
+export { io };
 // Socket.IO connection handling
 io.on('connection', (socket) => {
     console.log('A user connected');
@@ -60,7 +60,7 @@ routes(app);
 
 // Root route
 app.get('/', (req, res) => {
-    res.send("Hello, Game store running");
+    res.send("Hello, MediCare running");
 });
 
 // Server listening

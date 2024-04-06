@@ -1,0 +1,76 @@
+.doctorRegisterContainer {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background-image: url(https://i.pinimg.com/564x/90/17/a1/9017a19be8fed9558692f5d87687ad99.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .doctorRegisterForm {
+    position: absolute;
+    top: 10rem;
+    left: 6rem;
+    width: 35%;
+    min-width: 300px;
+    height: auto;
+    border: none;
+    border-radius: 10px;
+    background-color: white;
+    padding: 20px;
+  }
+  
+  .doctorRegisterForm h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .doctorRegisterForm form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .doctorRegisterForm .inputContainer {
+    margin-bottom: 15px;
+  }
+  
+  .doctorRegisterForm label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .doctorRegisterForm input[type="text"],
+  .doctorRegisterForm input[type="email"],
+  .doctorRegisterForm input[type="password"] {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0 10px;
+  }
+  
+  .doctorRegisterForm button[type="submit"] {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: #124948;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .doctorRegisterForm button[type="submit"]:hover {
+    background-color: #56d4d2;
+  }
+  
+  .doctorRegisterForm p {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .doctorRegisterForm p a {
+    color: #007bff;
+  }

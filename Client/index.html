@@ -4,10 +4,24 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>MediCare</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.socket.io/4.0.1/socket.io.js"></script>
+    <script>
+      // Connect to the Socket.IO server
+      const socket = io('http://localhost:3000');
+  
+      // Listen for incoming messages
+      socket.on('message', (message) => {
+        console.log('Received message:', message);
+        // Process the received message in your frontend
+      });
+  
+      // Send a message to the server
+      socket.emit('message', 'Hello from the frontend!');
+    </script>
   </head>
   <body>
     <div id="root">
